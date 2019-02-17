@@ -66,6 +66,10 @@ class Client(
             sender = tc.receiver
             token = tc.pack.payload.toByteArray().toHexString().substring(2)
         }
+        if (tc.pack.command == Command.LOGOUT) {
+            println("Received answer of LOGOUT command => resetting token")
+            token = defaultToken
+        }
         return tc.pack
     }
 
